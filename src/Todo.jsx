@@ -8,6 +8,7 @@ function Todo() {
         e.preventDefault();
         if(newTodo){
             setTodos([...todos,{text:newTodo,completed:false}])
+            setNewTodo('')
         }
     }
 
