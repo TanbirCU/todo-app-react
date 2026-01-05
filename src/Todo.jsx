@@ -13,14 +13,16 @@ function Todo() {
     }
 
     const handleDelete=(index)=>{
-
+        const newTodos=[...todos];
+        newTodos[index].completed=!newTodos[index].completed;
+        setTodos(newTodos);
     }
 
 
   return (
     <div>
         <h1>Todo App</h1>
-        <form onsubmit={handleSubmit}>
+        <form onSubmit={handleSubmit}>
             <input 
                 type="text" 
                 placeholder='Add new todo'
@@ -32,7 +34,7 @@ function Todo() {
         <ul>
             {todos.map((todo, index) =>(
                 <li key={index}>
-                    <span>todo.text</span>
+                    <span style={{ textDecoration: todo.completed ? 'line-through' : 'none' }}>{todo.text}</span>
                     <button onClick={()=>handleDelete(index)}>Delete</button>
                 </li>
 
